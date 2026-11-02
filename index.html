@@ -123,7 +123,6 @@ header.top .peek .emark { position: relative; z-index: 1; display: block; }
 .results .none { padding: 10px; color: var(--muted); font-size: calc(13px * var(--fs)); }
 .iconbtn { width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); cursor: pointer; font-size: 15px; display: grid; place-items: center; flex: none; }
 .searchbtn { display: none; }
-.mock-note { font-size: 12px; color: var(--muted); background: var(--sunken); border: 1px dashed var(--coast); padding: 3px 10px; border-radius: 99px; white-space: nowrap; }
 
 /* ---------- map ---------- */
 .stage { position: relative; min-height: 0; }
@@ -665,14 +664,12 @@ details.src ul { margin: 6px 0 0; padding-left: 18px; }
 .dg .ln { stroke: var(--muted); stroke-width: .8; fill: none; }
 
 /* ---------- phone ---------- */
-@media (max-width: 1250px) { .mock-note { display: none; } }
 @media (max-width: 900px) {
   header.top { gap: 8px; padding: 8px 12px; }
   header.top h1 { font-size: 17px; }
   header.top .emark { width: 26px; height: 26px; }
   header.top .peek { --em: 26px; }
   .nav a { padding: 4px 8px; font-size: 12px; }
-  .mock-note { display: none; }
   .search { display: none; position: absolute; left: 8px; right: 8px; top: 8px; width: auto; margin: 0; z-index: 40; }
   .search.open { display: block; }
   .search input { background: var(--surface); border-color: var(--gold); padding-top: 9px; padding-bottom: 9px; }
@@ -821,7 +818,6 @@ try { const s = localStorage.getItem("hm-text-size"); if (s === "1.15" || s === 
     <use href="#emdag" transform="translate(40 0) scale(-1 1)"/></g></svg></span><span>History in Gold</span></h1>
   <button class="learnbtn" id="learnbtn" aria-label="Learn about gold coins"><span aria-hidden="true">✦</span><span class="w">Learn</span></button>
   <button class="learnbtn trailsbtn" id="trailsbtn" aria-label="Stories: follow a coin's journey" aria-pressed="false"><svg class="tric" viewBox="0 0 20 14" aria-hidden="true"><path d="M2 11 C6 11 6 3 10 3 S14 11 18 11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-dasharray="2.6 2.2" stroke-linecap="round"/><circle cx="2" cy="11" r="2" fill="currentColor"/><circle cx="18" cy="11" r="2" fill="currentColor"/></svg><span class="w">Stories</span></button>
-  <span class="mock-note">Mock with real data · texts not yet reviewed</span>
   <div class="search" id="search">
     <span class="mag">⌕</span>
     <input id="q" type="search" placeholder="Search coins, rulers, places, events…" autocomplete="off" aria-label="Search the map">
