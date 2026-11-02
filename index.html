@@ -2478,7 +2478,10 @@ function readHash() {
 function toast(msg) { const t = $("toast"); t.textContent = msg; t.classList.add("on"); clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove("on"), 2200); }
 
 addEventListener("resize", () => { setView(view); layoutEventNames(); drawThread(); $("panel").style.setProperty("--tall-top", $("map").getBoundingClientRect().top + 12 + "px"); });
-document.fonts.ready.then(layoutEventNames);
+// Labels are measured in their web fonts; re-measure once each font arrives (the italic loads late, 2 Nov).
+const refitLabels = () => { layoutEventNames(); drawThread(); };
+document.fonts.ready.then(refitLabels);
+document.fonts.addEventListener?.("loadingdone", refitLabels);
 renderLayers();
 layoutEventNames();
 setYear(year, true);
