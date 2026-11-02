@@ -6,6 +6,8 @@ A map of the ancient world from 650 BC to AD 1204, told through its gold coins. 
 
 **[Open the map →](https://escargot-studio.github.io/history-through-coins/)**  ·  Companion to the [Gold Coin Catalogue](https://escargot-studio.github.io/gold-coin-catalogue/ancient.html), where every coin has its own card.
 
+![The history map at 44 BC, the year of the Ides of March: the Roman Republic in red, gold coins on their mints, and the timeline of murders, wars and treasures below](readme-img/map.jpg)
+
 ## What's inside
 
 - **Borders by year**, from archaic Greece to the sack of Constantinople, with today's borders as a faint guide.
