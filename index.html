@@ -699,6 +699,9 @@ html.embed body > :not(#learn):not(script) { display: none !important; }
 .lrail .lcards button { display: grid; grid-template-columns: 20px 1fr; gap: 4px; padding: 4px 8px; font-size: calc(12.5px * var(--fs)); color: var(--muted); }
 .lrail .lcards b { color: var(--gold); font-variant-numeric: tabular-nums; }
 .lwrap .chnav { display: none; }
+.lrail .lcards .ltpart { display: block; margin: 10px 8px 2px; font: 700 calc(10px * var(--fs)) var(--font-body); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.lrail .lcards .ltpart:first-child { margin-top: 2px; }
+@media (min-width: 901px) { .lwrap .lesson { display: block; } .lwrap .lesson .ltoc { display: none; } .lwrap .lesson .lhead2 { max-width: none; } }
 .lwrap .pcards { grid-template-columns: minmax(0, 1fr); gap: 18px; }
 .lwrap .pcard { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); scroll-margin-top: 70px; }
 .lwrap .pcard .pics { min-height: 300px; align-content: stretch; }
@@ -2163,6 +2166,7 @@ function render() {
 function open(s, fromMap = false) {
   if (s.kind === "coin") showObv = false;
   if (fromMap || ["event", "war", "trails", "about", "year"].includes(s.kind)) stack = [];
+  if (fromMap) learnReturn = null;   // a fresh start from the map forgets the lesson
   const t = top_();
   if (t && t.kind === s.kind && t.id === s.id) return render();
   stack.push(s);
@@ -2204,7 +2208,7 @@ $("feats").addEventListener("click", e => {
 $("panel").addEventListener("click", e => {
   const g = sel => e.target.closest(sel);
   let b;
-  if (g("[data-close]")) { stack = []; panelSize = "normal"; return render(); }
+  if (g("[data-close]")) { stack = []; panelSize = "normal"; render(); return backToLesson(); }
   if (g("[data-tall]")) { trailTall = !trailTall; const y = $("panel").scrollTop; render(); $("panel").scrollTop = y; return; }
   if ((b = g("[data-size]"))) { panelSize = panelSize === b.dataset.size ? "normal" : b.dataset.size; return render(); }
   if ($("panel").classList.contains("away") && g(".head") && !g("button")) return g(".away-bar button")?.click() || $("panel").querySelector(".away-bar button").click();
@@ -2466,7 +2470,7 @@ function renderLearn() {
     body = `<p class="lintro">${LEARN.length} lessons in pictures. Each one stands alone, so start anywhere.</p>${LEARN_GROUPS.map(sec).join("")}`;
   } else {
     const i = LEARN.indexOf(c), next = LEARN[i + 1], deep = c.level === "collectors";
-    if (c.level === "feature" || c.lesson) body = lessonHtml(c, next); else body = `<div class="lwrap">${learnRail(c)}<div class="lcol"><h2 class="chtitle">${esc(c.title)} ${deep ? '<span class="tag-deep">for collectors</span>' : ""}</h2><p class="lintro">${esc(c.teaser)}</p>
+    if (c.level === "feature" || c.lesson) body = `<div class="lwrap">${learnRail(c)}<div class="lcol">${lessonHtml(c, next)}</div></div>`; else body = `<div class="lwrap">${learnRail(c)}<div class="lcol"><h2 class="chtitle">${esc(c.title)} ${deep ? '<span class="tag-deep">for collectors</span>' : ""}</h2><p class="lintro">${esc(c.teaser)}</p>
       <div class="chnav">${LEARN.map(x => `<button data-chap="${x.id}" class="${x.level === "collectors" ? "deep" : ""}" ${x.id === c.id ? 'aria-current="true"' : ""}>${esc(x.title)}</button>`).join("")}</div>
       <div class="pcards">${c.cards.map((k, j) => `<article class="pcard" id="lcard-${j}">
         <div class="pics ${k.pics.length === 1 && k.pics[0].diagram ? "solo-dg" : ""}">${k.pics.map(picHtml).join("")}</div>
@@ -2491,7 +2495,9 @@ function learnRail(c) {
   const group = (level, label) => {
     const xs = LEARN.filter(x => groupOf(x) === level);
     return xs.length ? `<h5>${label}</h5>` + xs.map(x => `<button data-chap="${x.id}"${x.id === c.id ? ' aria-current="true"' : ""}>${esc(x.title)}</button>` +
-      (x.id === c.id ? `<div class="lcards">${c.cards.map((k, j) => `<button data-lcard="${j}"><b>${j + 1}</b><span>${esc(k.title)}</span></button>`).join("")}</div>` : "")).join("") : "";
+      (x.id === c.id ? `<div class="lcards">${c.cards.map((k, j) => (c.level === "feature" || c.lesson)
+        ? `${k.part && k.part !== (c.cards[j - 1] || {}).part ? `<span class="ltpart">${esc(k.part)}</span>` : ""}<button data-lstep="${esc(k.id)}"><b>${j + 1}</b><span>${esc(k.title)}</span></button>`
+        : `<button data-lcard="${j}"><b>${j + 1}</b><span>${esc(k.title)}</span></button>`).join("")}</div>` : "")).join("") : "";
   };
   return `<nav class="lrail" aria-label="Topics">${LEARN_GROUPS.map(g => group(g, groupTitle(g))).join("")}</nav>`;
 }
@@ -2535,6 +2541,13 @@ const toHost = msg => { if (window.HM_EMBED) parent.postMessage(Object.assign({ 
 function openLearn(id = null) { learnAt = id && CHAP.has(id) ? id : null; $("learn").hidden = false; renderLearn(); $("lbox").querySelector(".x").focus(); }
 // The catalogue asks for a lesson by message (a hash change alone doesn't reach an already loaded frame).
 if (window.HM_EMBED) addEventListener("message", e => { if (e.source === parent && e.data && e.data.to === "history-map-learn" && e.data.t === "go") openLearn(e.data.id || null); });
+var learnReturn = null;   // where to go back to when a card opened from a lesson closes
+function backToLesson() {
+  const r = learnReturn; learnReturn = null; if (!r) return;
+  openLearn(r.chap);
+  const go = () => { $("learn").scrollTop = r.y; $("lbox").scrollTop = r.yb; };   // again once the pictures have laid out
+  go(); requestAnimationFrame(go); setTimeout(go, 250); setTimeout(go, 700);
+}
 function closeLearn() { if (window.HM_EMBED) return toHost({ t: "close" }); $("learn").hidden = true; writeHash(); }
 $("learnbtn").onclick = () => openLearn();
 $("trailsbtn").onclick = () => open({ kind: "trails" }, true);
@@ -2548,15 +2561,17 @@ $("learn").addEventListener("click", e => {
   if (ls) { document.getElementById("lstep-" + ls.dataset.lstep)?.scrollIntoView({ behavior: "smooth", block: "start" }); return; }
   const lc = e.target.closest("[data-lcoin]");
   if (lc && window.HM_EMBED) return toHost({ t: "coin", id: lc.dataset.lcoin });
-  if (lc) { closeLearn(); return open({ kind: "coin", id: lc.dataset.lcoin }); }
+  // 6 Nov: closing a card opened from a lesson goes back to the same place in the lesson.
+  const keep = () => { learnReturn = { chap: learnAt, y: $("learn").scrollTop, yb: $("lbox").scrollTop }; };
+  if (lc) { keep(); closeLearn(); stack = []; return open({ kind: "coin", id: lc.dataset.lcoin }); }
   const lt = e.target.closest("[data-ltrail]");
   if (lt && window.HM_EMBED) return toHost({ t: "open", hash: `#map/${TRAILS.get(lt.dataset.ltrail)?.stops?.[0]?.y ?? ""}/trail/${lt.dataset.ltrail}/0` });
-  if (lt) { closeLearn(); return open({ kind: "trail", id: lt.dataset.ltrail, stop: 0 }); }
+  if (lt) { keep(); closeLearn(); stack = []; return open({ kind: "trail", id: lt.dataset.ltrail, stop: 0 }); }
   const lm = e.target.closest("[data-lmap]");
   if (lm && window.HM_EMBED) return toHost({ t: "open", hash: lm.dataset.lmap });
   if (lm) {
     const m = lm.dataset.lmap.match(/^#map\/(-?\d+)\/mint\/(.+)$/);
-    closeLearn();
+    keep(); closeLearn();
     if (m) { setYear(+m[1], true); if (MINTS.has(m[2])) open({ kind: "mint", id: m[2] }); }
   }
 });
