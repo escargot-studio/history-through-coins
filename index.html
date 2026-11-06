@@ -607,7 +607,8 @@ details.src ul { margin: 6px 0 0; padding-left: 18px; }
 .ltoc button { all: unset; cursor: pointer; display: grid; grid-template-columns: 24px 1fr; gap: 6px; padding: 5px 8px; border-radius: 8px; font-size: calc(13px * var(--fs)); line-height: 1.3; }
 .ltoc button b { color: var(--gold-lo, var(--gold)); font-variant-numeric: tabular-nums; }
 .ltoc button:hover, .ltoc button:focus-visible { background: var(--surface-2, rgba(0,0,0,.05)); }
-.lsteps { display: grid; gap: 18px; }
+.lsteps { display: grid; gap: 18px; grid-template-columns: minmax(0, 1fr); }   /* 6 Nov 2026: a wide card no longer pushes past the screen edge on phones */
+.lstep { min-width: 0; }
 .lstep { display: grid; grid-template-columns: 38px minmax(0, 1fr); gap: 0 14px; padding: 20px 22px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; scroll-margin-top: 10px; }
 .lnum { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; font: 600 calc(15px * var(--fs)) var(--font-body); color: var(--gold-lo, var(--gold)); border: 1.5px solid currentColor; }
 .lmain { display: grid; gap: 10px; min-width: 0; }
@@ -683,6 +684,7 @@ details.src ul { margin: 6px 0 0; padding-left: 18px; }
 .chend { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px; }
 /* Learn, full screen (1 Nov): the box fills the window; a topic reads as a rail + one column of even rows */
 .learn { padding: 0; background: var(--bg); }
+html.embed body > :not(#learn):not(script) { display: none !important; }
 .lbox { width: 100%; height: 100%; border-radius: 0; box-shadow: none; }
 .lhead { padding: 12px max(22px, calc((100% - 1400px) / 2)); }
 .lbody { max-width: 1400px; margin: 0 auto; }
@@ -873,7 +875,11 @@ details.src ul { margin: 6px 0 0; padding-left: 18px; }
 .sub.cite { font-size: 12px; opacity: .85; margin-top: 4px; }
 .sub.cite a { color: inherit; text-decoration: underline; text-decoration-color: color-mix(in srgb, currentColor 40%, transparent); }
 </style>
-<script>/* text size: set before the page draws, so it doesn't jump */
+<script>/* Learn embedded in the Ancient catalogue (6 Nov 2026: one lesson viewer for both sites). ?embed=learn inside a frame
+   shows only the Learn viewer; ?theme=dark|light follows the catalogue's own theme switch. */
+window.HM_EMBED = /[?&]embed=learn(&|$)/.test(location.search) && window.parent !== window;
+if (window.HM_EMBED) { document.documentElement.classList.add("embed"); const t = location.search.match(/[?&]theme=(dark|light)/); if (t) document.documentElement.dataset.theme = t[1]; }
+/* text size: set before the page draws, so it doesn't jump */
 try { const s = localStorage.getItem("hm-text-size"); if (s === "1.15" || s === "1.3") document.documentElement.style.setProperty("--fs", s); } catch (e) {}
 </script>
 <link rel="icon" href="favicon.ico" sizes="any">
@@ -2416,15 +2422,16 @@ const DIAGRAMS = {
       <defs><radialGradient id="gd" cx=".35" cy=".35"><stop offset="0" stop-color="var(--gold-hi)"/><stop offset="1" stop-color="var(--gold)"/></radialGradient></defs>${out}</svg>`;
   },
   weights: () => {
-    const W = [[8.6, "Attic stater", "Philip II, 4th c. BC"], [7.9, "Aureus", "Augustus, 27 BC"], [7.3, "Aureus", "after Nero, AD 64"], [4.5, "Solidus", "Constantine, AD 309"]];
-    return `<svg viewBox="0 0 360 210" role="img" aria-label="Gold coin weights falling from 8.6 grams to 4.5 grams">
+    // Weights match the "Weigh it" text (medians of the catalogue's museum coins); one line each for name, ruler, date so they never collide on phones.
+    const W = [[8.5, "Attic stater", "Philip II", "4th c. BC"], [7.8, "Aureus", "Augustus", "27 BC"], [7.2, "Aureus", "after Nero", "AD 64"], [4.4, "Solidus", "Constantine", "AD 309"]];
+    return `<svg viewBox="0 0 360 222" role="img" aria-label="Gold coin weights falling from 8.5 grams to 4.4 grams">
     <defs><radialGradient id="gw" cx=".35" cy=".35"><stop offset="0" stop-color="var(--gold-hi)"/><stop offset="1" stop-color="var(--gold)"/></radialGradient></defs>
-    ${W.map(([g, n, d], i) => { const x = 50 + i * 87, r = 10 * Math.sqrt(g);
+    ${W.map(([g, n, who, d], i) => { const x = 50 + i * 87, r = 10 * Math.sqrt(g);
       return `<circle cx="${x}" cy="${76 - r + 30}" r="${r}" fill="url(#gw)" stroke="var(--gold-lo)"/>
         <text x="${x}" y="${132}" text-anchor="middle" class="b" style="font-size:14px">${g} g</text>
-        <text x="${x}" y="${148}" text-anchor="middle">${n}</text><text x="${x}" y="${161}" text-anchor="middle" class="m">${d}</text>`; }).join("")}
-    <path d="M24 176 H336" class="ln" style="stroke-dasharray:3 3"/>
-    <text x="180" y="196" text-anchor="middle" class="b">72 solidi = 1 Roman pound (about 327 g)</text></svg>`;
+        <text x="${x}" y="${148}" text-anchor="middle">${n}</text><text x="${x}" y="${161}" text-anchor="middle" class="m">${who}</text><text x="${x}" y="${173}" text-anchor="middle" class="m">${d}</text>`; }).join("")}
+    <path d="M24 188 H336" class="ln" style="stroke-dasharray:3 3"/>
+    <text x="180" y="208" text-anchor="middle" class="b">72 solidi = 1 Roman pound (about 327 g)</text></svg>`;
   },
 };
 
@@ -2450,7 +2457,7 @@ function renderLearn() {
   const box = $("lbox"), c = learnAt && CHAP.get(learnAt);
   const head = `<div class="lhead"><button class="home" data-chap="">Gold coins, explained</button>
     ${c ? `<span class="crumbs">› ${esc(groupTitle(groupOf(c)))} › ${esc(c.title)}</span>` : ""}
-    <button class="x" data-lclose aria-label="Back to the map">×</button></div>`;
+    <button class="x" data-lclose aria-label="${window.HM_EMBED ? "Close" : "Back to the map"}">×</button></div>`;
   let body;
   if (!c) {
     const sec = g => { const xs = LEARN.filter(x => groupOf(x) === g); if (!xs.length) return "";
@@ -2472,11 +2479,12 @@ function renderLearn() {
             ${k.cite ? `<p class="sub cite">Source: ${k.cite.map(x => x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.t)} ↗</a>` : esc(x.t)).join(" · ")}</p>` : ""}
             <ul class="srcs">${k.src.map(x => `<li>${esc(x)}</li>`).join("")}</ul></details></div></article>`).join("")}</div>
       <div class="chend">${next ? `<button class="btn primary" data-chap="${next.id}">${next.level === "collectors" && !deep ? "Go deeper: " : "Next: "}${esc(next.title)} ›</button>` : ""}
-        <button class="btn" data-chap="">All topics</button><button class="btn" data-lclose>Back to the map</button></div></div></div>`;
+        <button class="btn" data-chap="">All topics</button><button class="btn" data-lclose>${window.HM_EMBED ? "Close" : "Back to the map"}</button></div></div></div>`;
   }
   box.innerHTML = head + `<div class="lbody">${body}</div>`;
   box.scrollTop = 0;
   history.replaceState(null, "", c ? `#learn/${c.id}` : "#learn");
+  toHost({ t: "at", id: c ? c.id : "" });
 }
 // The contents rail beside a topic: every topic by level, and the open topic's cards numbered under it.
 function learnRail(c) {
@@ -2520,11 +2528,14 @@ function lessonHtml(c, next) {
     <nav class="ltoc" aria-label="Chapters">${toc}</nav>
     <div class="lsteps">${steps}
       <div class="chend">${next ? `<button class="btn primary" data-chap="${next.id}">${next.series && next.series === c.series ? `Next episode: ${esc(next.title)}` : `Next topic: ${esc(next.title)}`} ›</button>` : ""}
-        <button class="btn" data-chap="">All topics</button><button class="btn" data-lclose>Back to the map</button></div></div>
+        <button class="btn" data-chap="">All topics</button><button class="btn" data-lclose>${window.HM_EMBED ? "Close" : "Back to the map"}</button></div></div>
   </div>`;
 }
+const toHost = msg => { if (window.HM_EMBED) parent.postMessage(Object.assign({ from: "history-map-learn" }, msg), "*"); };
 function openLearn(id = null) { learnAt = id && CHAP.has(id) ? id : null; $("learn").hidden = false; renderLearn(); $("lbox").querySelector(".x").focus(); }
-function closeLearn() { $("learn").hidden = true; writeHash(); }
+// The catalogue asks for a lesson by message (a hash change alone doesn't reach an already loaded frame).
+if (window.HM_EMBED) addEventListener("message", e => { if (e.source === parent && e.data && e.data.to === "history-map-learn" && e.data.t === "go") openLearn(e.data.id || null); });
+function closeLearn() { if (window.HM_EMBED) return toHost({ t: "close" }); $("learn").hidden = true; writeHash(); }
 $("learnbtn").onclick = () => openLearn();
 $("trailsbtn").onclick = () => open({ kind: "trails" }, true);
 $("learn").addEventListener("click", e => {
@@ -2536,10 +2547,13 @@ $("learn").addEventListener("click", e => {
   const ls = e.target.closest("[data-lstep]");
   if (ls) { document.getElementById("lstep-" + ls.dataset.lstep)?.scrollIntoView({ behavior: "smooth", block: "start" }); return; }
   const lc = e.target.closest("[data-lcoin]");
+  if (lc && window.HM_EMBED) return toHost({ t: "coin", id: lc.dataset.lcoin });
   if (lc) { closeLearn(); return open({ kind: "coin", id: lc.dataset.lcoin }); }
   const lt = e.target.closest("[data-ltrail]");
+  if (lt && window.HM_EMBED) return toHost({ t: "open", hash: `#map/${TRAILS.get(lt.dataset.ltrail)?.stops?.[0]?.y ?? ""}/trail/${lt.dataset.ltrail}/0` });
   if (lt) { closeLearn(); return open({ kind: "trail", id: lt.dataset.ltrail, stop: 0 }); }
   const lm = e.target.closest("[data-lmap]");
+  if (lm && window.HM_EMBED) return toHost({ t: "open", hash: lm.dataset.lmap });
   if (lm) {
     const m = lm.dataset.lmap.match(/^#map\/(-?\d+)\/mint\/(.+)$/);
     closeLearn();
@@ -2626,6 +2640,7 @@ if (innerWidth <= 900) {
   setView({ w: 480, x: 330, y: 120 });
 } else setView({ w: 1000, x: 0, y: 0 });
 readHash();
+if (window.HM_EMBED && $("learn").hidden) openLearn();
 if (!top_() && $("learn").hidden) {   // nothing asked for in the link: start on the Stories list
   if (innerWidth <= 900) $("panel").dataset.snap = "peek";
   open({ kind: "trails" }, true);
