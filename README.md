@@ -14,14 +14,14 @@ A map of the ancient world from 650 BC to AD 1204, told through its gold coins. 
 - **Gold coins on their mints**: click one for both sides, the ruler and the story.
 - **Wars and battles**: each war's sides and battles appear while the slider is in its years.
 - **Stories**: short illustrated walks, such as the owl of Athens, Alexander's gold after Alexander, and Caesar's rise and fall.
-- **Learn**: short illustrated lessons, also readable as [plain pages](https://escargot-studio.github.io/history-through-coins/learn/).
+- **Learn**: short illustrated lessons, also on the catalogue as [plain pages](https://escargot-studio.github.io/gold-coin-catalogue/learn/).
 
 ## Lessons
 
-- **Start here**: [Coin names and sizes](https://escargot-studio.github.io/history-through-coins/learn/names/) · [Reading a coin](https://escargot-studio.github.io/history-through-coins/learn/read/) · [Gods on coins](https://escargot-studio.github.io/history-through-coins/learn/gods/)
-- **Gold in history**: [What one gold coin bought](https://escargot-studio.github.io/history-through-coins/learn/buy/) · [Coins as propaganda](https://escargot-studio.github.io/history-through-coins/learn/power/) · [How we date ancient coins](https://escargot-studio.github.io/history-through-coins/learn/know/)
-- **Cities**: [Syracuse: why its coins are art](https://escargot-studio.github.io/history-through-coins/learn/syracuse/) · [Pantikapaion: the satyr at the edge of the world](https://escargot-studio.github.io/history-through-coins/learn/pantikapaion/)
-- **For collectors**: [How coins were made](https://escargot-studio.github.io/history-through-coins/learn/made/) · [Is it real?](https://escargot-studio.github.io/history-through-coins/learn/is-it-real/) · [Pedigree and provenance](https://escargot-studio.github.io/history-through-coins/learn/pedigree/)
+- **Start here**: [Coin names and sizes](https://escargot-studio.github.io/gold-coin-catalogue/learn/names/) · [Reading a coin](https://escargot-studio.github.io/gold-coin-catalogue/learn/read/) · [Gods on coins](https://escargot-studio.github.io/gold-coin-catalogue/learn/gods/)
+- **Gold in history**: [What one gold coin bought](https://escargot-studio.github.io/gold-coin-catalogue/learn/buy/) · [Coins as propaganda](https://escargot-studio.github.io/gold-coin-catalogue/learn/power/) · [How we date ancient coins](https://escargot-studio.github.io/gold-coin-catalogue/learn/know/)
+- **Cities**: [Syracuse: why its coins are art](https://escargot-studio.github.io/gold-coin-catalogue/learn/syracuse/) · [Pantikapaion: the satyr at the edge of the world](https://escargot-studio.github.io/gold-coin-catalogue/learn/pantikapaion/)
+- **For collectors**: [How coins were made](https://escargot-studio.github.io/gold-coin-catalogue/learn/made/) · [Is it real?](https://escargot-studio.github.io/gold-coin-catalogue/learn/is-it-real/) · [Pedigree and provenance](https://escargot-studio.github.io/gold-coin-catalogue/learn/pedigree/)
 
 ## Sources and licences
 
