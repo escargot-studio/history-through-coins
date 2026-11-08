@@ -2,10 +2,191 @@
 <html lang="en-GB">
 <head>
 <meta charset="utf-8">
-<title>Reading a coin</title>
-<link rel="canonical" href="https://escargot-studio.github.io/gold-coin-catalogue/learn/read/">
-<meta http-equiv="refresh" content="0; url=https://escargot-studio.github.io/gold-coin-catalogue/learn/read/">
-<script>location.replace("https://escargot-studio.github.io/gold-coin-catalogue/learn/read/" + location.hash);</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reading a coin · History through coins</title>
+<meta name="description" content="Every letter, mark and gram on a gold coin means something. Learn to read them and a coin tells you who made it, where, when, and whether it is what the seller says.">
+<link rel="canonical" href="https://escargot-studio.github.io/history-through-coins/learn/read/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="History through coins">
+<meta property="og:title" content="Reading a coin · History through coins">
+<meta property="og:description" content="Every letter, mark and gram on a gold coin means something. Learn to read them and a coin tells you who made it, where, when, and whether it is what the seller says.">
+<meta property="og:url" content="https://escargot-studio.github.io/history-through-coins/learn/read/">
+<meta property="og:image" content="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/split-1bed191183f4-rev.webp">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="https://escargot-studio.github.io/history-through-coins/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="https://escargot-studio.github.io/history-through-coins/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Figtree:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root { --bg: #f6f3ee; --surface: #fffdf9; --fg: #1f1b16; --muted: #6b6257; --line: #e4ddd2; --gold: #94670f; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --bg: #16130f; --surface: #1e1a15; --fg: #eee7dc; --muted: #a99d8e; --line: #3a332a; --gold: #d6a84a; }
+}
+:root[data-theme="dark"] { --bg: #16130f; --surface: #1e1a15; --fg: #eee7dc; --muted: #a99d8e; --line: #3a332a; --gold: #d6a84a; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 17px/1.6 Figtree, system-ui, sans-serif; }
+a { color: var(--gold); }
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 16px; }
+header.top { border-bottom: 1px solid var(--line); background: var(--surface); }
+header.top .wrap { display: flex; gap: 10px 18px; align-items: center; justify-content: space-between; flex-wrap: wrap; padding-block: 12px; }
+.crumbs { font-size: 14px; color: var(--muted); }
+.crumbs a { color: var(--muted); text-decoration: none; }
+.crumbs a:hover { color: var(--gold); }
+h1, h2, h3 { font-family: Marcellus, Georgia, serif; font-weight: 400; line-height: 1.25; }
+h1 { font-size: clamp(30px, 6vw, 42px); margin: 36px 0 10px; }
+.kicker { color: var(--muted); font-size: 14px; letter-spacing: .06em; text-transform: uppercase; margin-top: 32px; }
+.teaser { font-size: 19px; color: var(--muted); margin: 0 0 22px; }
+.open { display: inline-block; background: var(--gold); color: #fff; text-decoration: none; font-weight: 600;
+        padding: 10px 18px; border-radius: 999px; }
+:root[data-theme="dark"] .open { color: #16130f; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .open { color: #16130f; } }
+.covers { display: flex; gap: 14px; margin: 26px 0 6px; flex-wrap: wrap; }
+.covers img { width: 104px; height: 104px; object-fit: contain; }
+article.card { border-top: 1px solid var(--line); padding: 26px 0 8px; }
+.part { color: var(--muted); font-size: 14px; }
+article.card h2 { font-size: 26px; margin: 4px 0 12px; }
+.say { font-weight: 600; }
+figure { margin: 16px 0; }
+.pics { display: flex; flex-wrap: wrap; gap: 14px; }
+.pics figure { margin: 0; flex: 1 1 140px; max-width: 220px; }
+.pics img { width: 100%; max-height: 220px; object-fit: contain; display: block; }
+.pics svg { width: 100%; height: auto; color: var(--fg); }
+figcaption, .src { font-size: 13px; color: var(--muted); }
+.src ul { margin: 6px 0 0; padding-left: 18px; }
+nav.more { border-top: 1px solid var(--line); margin-top: 30px; padding: 20px 0; }
+nav.more ul { padding-left: 18px; }
+.groups section { margin: 30px 0; }
+.groups h2 { font-size: 26px; margin: 0 0 4px; }
+.groups .line { color: var(--muted); margin: 0 0 12px; }
+.tile { display: block; padding: 14px 16px; margin: 10px 0; border: 1px solid var(--line); border-radius: 14px;
+        background: var(--surface); color: var(--fg); text-decoration: none; }
+.tile:hover { border-color: var(--gold); }
+.tile b { font-family: Marcellus, Georgia, serif; font-weight: 400; font-size: 21px; display: block; }
+.tile span { color: var(--muted); font-size: 15px; }
+footer { border-top: 1px solid var(--line); margin-top: 40px; padding: 22px 0 40px; color: var(--muted); font-size: 13px; text-align: center; }
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Reading a coin", "description": "Every letter, mark and gram on a gold coin means something. Learn to read them and a coin tells you who made it, where, when, and whether it is what the seller says.", "url": "https://escargot-studio.github.io/history-through-coins/learn/read/", "inLanguage": "en-GB", "isPartOf": {"@type": "WebSite", "name": "History through coins", "url": "https://escargot-studio.github.io/history-through-coins/"}, "author": {"@type": "Organization", "name": "escargot-studio"}, "image": "https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/split-1bed191183f4-rev.webp"}</script>
+<script data-goatcounter="https://escargot-studio.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
-<body><p><a href="https://escargot-studio.github.io/gold-coin-catalogue/learn/read/">Reading a coin</a></p></body>
+<body>
+<header class="top"><div class="wrap">
+  <div class="crumbs"><a href="https://escargot-studio.github.io/history-through-coins/">History through coins</a> › <a href="https://escargot-studio.github.io/history-through-coins/learn/">Learn</a></div>
+  <a class="crumbs" href="https://escargot-studio.github.io/gold-coin-catalogue/ancient.html">Ancient gold catalogue ↗</a>
+</div></header>
+<main class="wrap">
+
+<h1>Reading a coin</h1>
+<p class="teaser">Every letter, mark and gram on a gold coin means something. Learn to read them and a coin tells you who made it, where, when, and whether it is what the seller says.</p>
+<a class="open" href="https://escargot-studio.github.io/history-through-coins/#learn/read">Open this lesson on the map →</a>
+<div class="covers"><img src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/split-1bed191183f4-rev.webp" alt="EID MAR"><img src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/d8010bbbd2ad-cut.webp" alt="Gold coin"><img src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/e4b59e26c24f-cut.webp" alt="Gold coin"></div>
+<article class="card">
+<h2>Front and back</h2>
+<p class="say">The front (obverse) was struck by the die set in the anvil, usually with a head. The back (reverse) came from the die held on top and hit with the hammer, and it carries the message.</p>
+<div class="pics"><figure><img src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/split-1bed191183f4-rev.webp" alt="Back first: daggers, cap of liberty, EID MAR" loading="lazy"><figcaption>Back first: daggers, cap of liberty, EID MAR<br><a href="https://new.coinsweekly.com/?p=234196" rel="nofollow">Roma Numismatics, Auction XX (2020), via CoinsWeekly · Auction photo, linked from the source</a></figcaption></figure><figure><img src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/split-1bed191183f4-obv.webp" alt="Front: Brutus" loading="lazy"><figcaption>Front: Brutus<br><a href="https://new.coinsweekly.com/?p=234196" rel="nofollow">Roma Numismatics, Auction XX (2020), via CoinsWeekly · Auction photo, linked from the source</a></figcaption></figure><figure><img src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/split-586a75b1e0f6-rev.webp" alt="Back first: the owl of Athens" loading="lazy"><figcaption>Back first: the owl of Athens<br><a href="https://www.sixbid.com/en/leu-numismatik/14116/greek/12530366/b-attica-athens-circa-454-404-bc-b" rel="nofollow">Leu Numismatik, Auction 24 (2026), lot 1072 · Auction photo, linked from the source</a></figcaption></figure><figure><img src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/split-586a75b1e0f6-obv.webp" alt="Front: Athena" loading="lazy"><figcaption>Front: Athena<br><a href="https://www.sixbid.com/en/leu-numismatik/14116/greek/12530366/b-attica-athens-circa-454-404-bc-b" rel="nofollow">Leu Numismatik, Auction 24 (2026), lot 1072 · Auction photo, linked from the source</a></figcaption></figure></div>
+<p>Some coins are famous for the back. Brutus&#x27;s EID MAR aureus is known for its two daggers and the cap of liberty, and the Athens owl for its owl, so this catalogue shows them back first.</p>
+<div class="src">Sources<ul><li>Catalogue: Brutus aureus, EID MAR (the 2020 record coin)</li><li>Catalogue: Athens owl tetradrachm</li></ul></div>
+</article>
+<article class="card">
+<div class="part">The words</div>
+<h2>Greek: whose coin?</h2>
+<p class="say">Greek coins name the owner in the genitive, &#x27;of&#x27;: ΦΙΛΙΠΠΟΥ, &#x27;(coin) of Philip&#x27;; ΒΑΣΙΛΕΩΣ ΠΥΡΡΟΥ, &#x27;of King Pyrrhus&#x27;; ΣΥΡΑΚΟΣΙΩΝ, &#x27;of the Syracusans&#x27;, a city speaking for itself.</p>
+<div class="pics"><figure><img src="https://ikmk.smb.museum/image/18252755/rs_org.jpg" alt="ΦΙΛΙΠΠΟΥ above the chariot" loading="lazy"><figcaption>ΦΙΛΙΠΠΟΥ above the chariot<br><a href="https://ikmk.smb.museum/object?id=18252755" rel="nofollow">Münzkabinett, Staatliche Museen zu Berlin · CC BY-SA 4.0</a></figcaption></figure><figure><img src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/crop-2a97634f3b7d.webp" alt="ΣΥΡΑΚΟΣΙΩΝ above Arethusa" loading="lazy"><figcaption>ΣΥΡΑΚΟΣΙΩΝ above Arethusa<br><a href="https://www.metmuseum.org/art/collection/search/247140" rel="nofollow">The Metropolitan Museum of Art · Public domain (Met Open Access)</a></figcaption></figure></div>
+<p>Small symbols and monograms in the field marked the issue, the mint or the official in charge. They are how experts tell a Philip stater struck at Pella from one struck at Amphipolis. At Syracuse the best engravers even signed their dies: see the Syracuse episode of &#x27;Why coins are art&#x27;.</p>
+<div class="src">Sources<ul><li>Le Rider, Le monnayage d&#x27;argent et d&#x27;or de Philippe II (1977)</li><li>Price, The Coinage in the Name of Alexander the Great and Philip Arrhidaeus (1991)</li></ul></div>
+</article>
+<article class="card">
+<div class="part">The words</div>
+<h2>Reading a Roman legend</h2>
+<p class="say">The words round the edge are the legend, cut short to fit. IMP CAES T AEL HADR ANTONINVS AVG PIVS P P reads &#x27;Commander Caesar Titus Aelius Hadrianus Antoninus Augustus Pius, father of his country&#x27;.</p>
+<div class="pics"><figure><img src="https://ikmk.smb.museum/image/18204408/vs_org.jpg" alt="Alive: ANTONINVS AVG PIVS P P" loading="lazy"><figcaption>Alive: ANTONINVS AVG PIVS P P<br><a href="https://ikmk.smb.museum/object?id=18204408" rel="nofollow">Münzkabinett, Staatliche Museen zu Berlin · CC BY-SA 4.0</a></figcaption></figure><figure><img src="https://ikmk.smb.museum/image/18204306/vs_org.jpg" alt="Deified: DIVVS ANTONINVS" loading="lazy"><figcaption>Deified: DIVVS ANTONINVS<br><a href="https://ikmk.smb.museum/object?id=18204306" rel="nofollow">Münzkabinett, Staatliche Museen zu Berlin · CC BY-SA 4.0</a></figcaption></figure></div>
+<p>Names come in the middle, titles around them: IMP commander, CAES Caesar, AVG Augustus, P M chief priest, P P father of his country. After an emperor died and was made a god he became DIVVS: on the right the same man, now DIVVS ANTONINVS, on a coin whose back shows his funeral pyre under the word CONSECRATIO.</p>
+<div class="src">Sources<ul><li>OCRE (Online Coins of the Roman Empire), RIC III Antoninus Pius 213</li><li>RIC III Marcus Aurelius 435</li></ul></div>
+</article>
+<article class="card">
+<div class="part">The words</div>
+<h2>A coin that dates itself</h2>
+<p class="say">TR POT, the power of a tribune, was renewed every year, so its number counts the years. TR POT XV COS IIII means the 15th year of that power and a fourth consulship: AD 151–152.</p>
+<div class="pics"><figure><img src="https://ikmk.smb.museum/image/18204408/rs_org.jpg" alt="TR POT XV COS IIII" loading="lazy"><figcaption>TR POT XV COS IIII<br><a href="https://ikmk.smb.museum/object?id=18204408" rel="nofollow">Münzkabinett, Staatliche Museen zu Berlin · CC BY-SA 4.0</a></figcaption></figure></div>
+<p>Emperors counted their own reigns this way. Augustus, the first emperor, wrote near the end of his life that he was &#x27;in the thirty-seventh year of my tribunician power&#x27;. Greek coins carry no such count, so they are dated by style, hoards and die links instead.</p>
+<div class="src">Sources<ul><li><a href="https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Augustus/Res_Gestae/1*.html" rel="nofollow">Augustus, Res Gestae 4 (his own account of his reign)</a></li></ul></div>
+</article>
+<article class="card">
+<div class="part">The words</div>
+<h2>Who is on it dates it</h2>
+<p class="say">Byzantine gold carries no year. The people on it do the dating: this solidus shows Constans II with his son Constantine IV on the front and his younger sons Heraclius and Tiberius on the back.</p>
+<div class="pics"><figure><img src="https://openaccess-cdn.clevelandart.org/2012.22.a/2012.22.a_web.jpg" alt="Constans II and Constantine IV" loading="lazy"><figcaption>Constans II and Constantine IV<br><a href="https://clevelandart.org/art/2012.22.a" rel="nofollow">The Cleveland Museum of Art · CC0</a></figcaption></figure><figure><img src="https://openaccess-cdn.clevelandart.org/2012.22.b/2012.22.b_web.jpg" alt="Heraclius and Tiberius" loading="lazy"><figcaption>Heraclius and Tiberius<br><a href="https://clevelandart.org/art/2012.22.a" rel="nofollow">The Cleveland Museum of Art · CC0</a></figcaption></figure></div>
+<p>Heraclius and Tiberius were crowned in 659 and Constans was murdered in 668, so the coin dates to 659–668. Earlier coins of the same emperor show him alone, beardless, then with a short and a long beard. Copper coins did carry years: from 538, Justinian&#x27;s show ANNO and the year of his reign.</p>
+<div class="src">Sources<ul><li>Sear, Byzantine Coins and Their Values 960</li><li>Grierson, Byzantine Coins (1982)</li><li>Cleveland Museum of Art 2012.22</li></ul></div>
+</article>
+<article class="card">
+<div class="part">The words</div>
+<h2>Late Roman shorthand</h2>
+<p class="say">By AD 400 a legend reads like a formula: D N HONORIVS P F AVG, &#x27;Our Lord Honorius, dutiful and fortunate, Augustus&#x27;. On the back, AVGGG has one G for each emperor ruling together: three.</p>
+<div class="pics"><figure><img src="https://ikmk.smb.museum/image/18210969/vs_org.jpg" alt="D N HONORIVS P F AVG" loading="lazy"><figcaption>D N HONORIVS P F AVG<br><a href="https://ikmk.smb.museum/object?id=18210969" rel="nofollow">Münzkabinett, Staatliche Museen zu Berlin · CC BY-SA 4.0</a></figcaption></figure><figure><img src="https://ikmk.smb.museum/image/18210969/rs_org.jpg" alt="VICTORIA AVGGG · M D · COMOB" loading="lazy"><figcaption>VICTORIA AVGGG · M D · COMOB<br><a href="https://ikmk.smb.museum/object?id=18210969" rel="nofollow">Münzkabinett, Staatliche Museen zu Berlin · CC BY-SA 4.0</a></figcaption></figure></div>
+<p>Look in the field and below the line. M and D on either side of the emperor stand for Mediolanum (Milan); RV is Ravenna, RM Rome. COMOB under the line says &#x27;pure gold&#x27;.</p>
+<div class="src">Sources<ul><li>RIC X Honorius 1206</li><li>Kent, Roman Imperial Coinage X (1994)</li></ul></div>
+</article>
+<article class="card">
+<div class="part">The words</div>
+<h2>CONOB: city and pure gold</h2>
+<p class="say">CON is Constantinople and OB is obryzum, refined gold. OB is also the Greek number 72: 72 solidi were struck from a Roman pound of gold.</p>
+<div class="pics"><figure><img src="https://ikmk.smb.museum/image/18213159/rs_org.jpg" alt="CONOB under the line" loading="lazy"><figcaption>CONOB under the line<br><a href="https://ikmk.smb.museum/object?id=18213159" rel="nofollow">Münzkabinett, Staatliche Museen zu Berlin · CC BY-SA 4.0</a></figcaption></figure></div>
+<p>A law of AD 367 in the Theodosian Code, the Roman empire&#x27;s law book, says gold paid to the treasury must come as refined gold (obryza) at 72 solidi to the pound, because forged solidi kept being slipped in.</p>
+<div class="src">Sources<ul><li><a href="https://www.thelatinlibrary.com/theodosius/theod12.shtml" rel="nofollow">Theodosian Code 12.6.13 (Latin text)</a></li></ul></div>
+</article>
+<article class="card">
+<div class="part">The words</div>
+<h2>Workshop letters</h2>
+<p class="say">On solidi of Constantinople the legend on the back, VICTORIA AVG..., ends in one more letter: A, B, Γ and on up to I. It is usually read as the number of the workshop, from 1 to 10.</p>
+<div class="pics"><figure><img src="https://openaccess-cdn.clevelandart.org/1968.56.b/1968.56.b_web.jpg" alt="Cross on steps, the legend ending in a workshop letter" loading="lazy"><figcaption>Cross on steps, the legend ending in a workshop letter<br><a href="https://clevelandart.org/art/1968.56.a" rel="nofollow">The Cleveland Museum of Art · CC0</a></figcaption></figure></div>
+<p>Collectors note it as &#x27;officina&#x27; (workshop) and catalogues list it, but whether the gold really came from ten workshops is still argued. Either way it is a check: a mint mark or letter that never existed is a warning sign.</p>
+<p>What the letter counted is still debated.</p>
+<div class="src">Sources<ul><li>Grierson, Byzantine Coins (1982)</li><li>Sear, Byzantine Coins and Their Values</li></ul></div>
+</article>
+<article class="card">
+<div class="part">The object</div>
+<h2>Weigh it</h2>
+<p class="say">Gold was money by weight, so a pocket scale reading to 0.01 g is the first test. A Greek stater is about 8.5 g, an aureus 7.8 g under Augustus and 7.2 g after Nero, a solidus 4.4–4.5 g.</p>
+<div class="pics"><figure><svg viewBox="0 0 360 242" role="img" font-family="Figtree, system-ui, sans-serif" aria-label="Gold coin weights falling from 8.5 grams to 4.4 grams, shown with real coins sized by weight"><g fill="currentColor"><image href="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/e4b59e26c24f-cut.webp" x="5.0" y="6.0" width="84.0" height="84.0" preserveAspectRatio="xMidYMid meet"/><text x="47" y="120" text-anchor="middle" style="font-size:17px;font-weight:600">8.5 g</text><rect x="12" y="128" width="70.0" height="5" rx="2.5" fill="var(--gold, #b8892d)"/><rect x="12" y="128" width="70" height="5" rx="2.5" fill="none" stroke="currentColor" stroke-opacity=".2"/><text x="47" y="152" text-anchor="middle" style="font-size:13px;font-weight:600">Stater</text><text x="47" y="167" text-anchor="middle" opacity="0.75" style="font-size:11.5px;font-weight:400">Philip II</text><text x="47" y="181" text-anchor="middle" opacity="0.75" style="font-size:11.5px;font-weight:400">4th c. BC</text><image href="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/be72ce49d226-cut.webp" x="99.0" y="16.0" width="74.0" height="74.0" preserveAspectRatio="xMidYMid meet"/><text x="136" y="120" text-anchor="middle" style="font-size:17px;font-weight:600">7.8 g</text><rect x="101" y="128" width="64.2" height="5" rx="2.5" fill="var(--gold, #b8892d)"/><rect x="101" y="128" width="70" height="5" rx="2.5" fill="none" stroke="currentColor" stroke-opacity=".2"/><text x="136" y="152" text-anchor="middle" style="font-size:13px;font-weight:600">Aureus</text><text x="136" y="167" text-anchor="middle" opacity="0.75" style="font-size:11.5px;font-weight:400">Augustus</text><text x="136" y="181" text-anchor="middle" opacity="0.75" style="font-size:11.5px;font-weight:400">27 BC</text><image href="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/learn-gods-nero-jupiter.webp" x="192.5" y="25.0" width="65.0" height="65.0" preserveAspectRatio="xMidYMid meet"/><text x="225" y="120" text-anchor="middle" style="font-size:17px;font-weight:600">7.2 g</text><rect x="190" y="128" width="59.3" height="5" rx="2.5" fill="var(--gold, #b8892d)"/><rect x="190" y="128" width="70" height="5" rx="2.5" fill="none" stroke="currentColor" stroke-opacity=".2"/><text x="225" y="152" text-anchor="middle" style="font-size:13px;font-weight:600">Aureus</text><text x="225" y="167" text-anchor="middle" opacity="0.75" style="font-size:11.5px;font-weight:400">after Nero</text><text x="225" y="181" text-anchor="middle" opacity="0.75" style="font-size:11.5px;font-weight:400">AD 64</text><image href="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/ccaa98013874-cut.webp" x="292.0" y="46.0" width="44.0" height="44.0" preserveAspectRatio="xMidYMid meet"/><text x="314" y="120" text-anchor="middle" style="font-size:17px;font-weight:600">4.4 g</text><rect x="279" y="128" width="36.2" height="5" rx="2.5" fill="var(--gold, #b8892d)"/><rect x="279" y="128" width="70" height="5" rx="2.5" fill="none" stroke="currentColor" stroke-opacity=".2"/><text x="314" y="152" text-anchor="middle" style="font-size:13px;font-weight:600">Solidus</text><text x="314" y="167" text-anchor="middle" opacity="0.75" style="font-size:11.5px;font-weight:400">Constantine</text><text x="314" y="181" text-anchor="middle" opacity="0.75" style="font-size:11.5px;font-weight:400">AD 309</text><path d="M20 196 H340" stroke="currentColor" stroke-opacity=".3" stroke-dasharray="3 3"/><text x="180" y="216" text-anchor="middle" style="font-size:13px;font-weight:600">72 solidi = 1 Roman pound (about 327 g)</text><text x="180" y="233" text-anchor="middle" opacity="0.7" style="font-size:11.5px;font-weight:400">Sizes exaggerated so the fall in weight is easy to see.</text></g></svg></figure></div>
+<p>The Roman naturalist Pliny the Elder, writing in the 70s AD, complains that emperors kept shaving the gold coin until Nero struck 45 to the pound instead of 40. The solidus then held its weight for some 700 years. A coin well under its usual weight may be worn, clipped, cleaned hard, once mounted, or not what it claims.</p>
+<div class="src">Sources<ul><li><a href="http://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0137:book=33:chapter=13" rel="nofollow">Pliny the Elder, Natural History 33.47 (Bostock&#x27;s translation, ch. 13)</a></li></ul></div>
+</article>
+<article class="card">
+<div class="part">The object</div>
+<h2>Die axis</h2>
+<p class="say">Hold the coin top and bottom and turn it over side to side. If the back is upright the axis is 12 o&#x27;clock (↑↑); upside down is 6 o&#x27;clock (↑↓). Catalogues give it in clock hours.</p>
+<div class="pics"><figure><svg viewBox="0 0 360 188" role="img" font-family="Figtree, system-ui, sans-serif" aria-label="Die axis on a solidus of Honorius: turn the coin over side to side. Back upright is 12 o'clock, back upside down is 6 o'clock; this coin is 6 o'clock"><g fill="currentColor"><image href="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/e7b2239547ad-cut.webp" x="10.0" y="44.0" width="84.0" height="84.0" preserveAspectRatio="xMidYMid meet"/><path d="M52 39 V23 M47 28 L52 22 L57 28" stroke="var(--gold, #b8892d)" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="52" y="148" text-anchor="middle" style="font-size:13px;font-weight:600">Front</text><text x="52" y="163" text-anchor="middle" opacity="0.75" style="font-size:11.5px;font-weight:400">head upright</text><path d="M104 70 C120 52 140 52 154 70" fill="none" stroke="currentColor" stroke-opacity=".55" stroke-width="1.6"/><path d="M148 62 L155 71 L144 72" fill="none" stroke="currentColor" stroke-opacity=".55" stroke-width="1.6"/><text x="129" y="96" text-anchor="middle" opacity="0.75" style="font-size:11px;font-weight:400">turn over</text><text x="129" y="109" text-anchor="middle" opacity="0.75" style="font-size:11px;font-weight:400">side to side</text><image href="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/42bd276d526a-cut.webp" x="164.0" y="44.0" width="84.0" height="84.0" preserveAspectRatio="xMidYMid meet"/><path d="M206 39 V23 M201 28 L206 22 L211 28" stroke="var(--gold, #b8892d)" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="206" y="148" text-anchor="middle" style="font-size:13px;font-weight:600">12 o'clock ↑↑</text><text x="206" y="163" text-anchor="middle" opacity="0.75" style="font-size:11.5px;font-weight:400">back upright</text><image href="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/42bd276d526a-cut.webp" x="264.0" y="44.0" width="84.0" height="84.0" preserveAspectRatio="xMidYMid meet" transform="rotate(180 306 86)"/><path d="M306 39 V23 M301 28 L306 22 L311 28" stroke="var(--gold, #b8892d)" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="306" y="148" text-anchor="middle" style="font-size:13px;font-weight:600">6 o'clock ↑↓</text><text x="306" y="163" text-anchor="middle" opacity="0.75" style="font-size:11.5px;font-weight:400">back upside down</text><path d="M255 30 V150" stroke="currentColor" stroke-opacity=".2" stroke-dasharray="3 3"/><text x="256" y="20" text-anchor="middle" opacity="0.6" style="font-size:11px;font-weight:400">or</text><text x="306" y="180" text-anchor="middle" opacity="0.6" style="font-size:11px;font-weight:400">this Honorius solidus</text></g></svg></figure></div>
+<p>Roman mints mostly set their dies square: 8 in 10 of the catalogue&#x27;s imperial gold coins sit at 6 or 12 o&#x27;clock. Greek dies were often held by hand, and only about 4 in 10 do. An odd axis for a mint that kept them fixed is a reason to look harder, not proof of a fake.</p>
+<div class="src">Sources<ul><li>Die axes recorded by the Berlin Münzkabinett and other museums for 1,372 catalogue coins</li></ul></div>
+</article>
+<article class="card">
+<div class="part">The object</div>
+<h2>A loupe and a lamp</h2>
+<p class="say">A 10x loupe and one lamp held low to the side show what a photo hides: tool marks, tiny pits, scratches, and how crisp the letters really are.</p>
+<div class="pics"><figure><div role="img" aria-label="A 3x look at the letters ΒΑΣΙΛΕΩΣ on the Pyrrhus stater" style="width:200px;max-width:100%;aspect-ratio:1;margin:auto;border-radius:50%;border:3px solid #b8892d;background:url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Monnaie_-_Stat%C3%A8re%2C_Or%2C_Incertain%2C_%C3%89pire%2C_Pyrrhus_-_btv1b113170136_%282_of_2%29.jpg/960px-Monnaie_-_Stat%C3%A8re%2C_Or%2C_Incertain%2C_%C3%89pire%2C_Pyrrhus_-_btv1b113170136_%282_of_2%29.jpg') 86% 30%/300% no-repeat"></div></figure><figure><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Monnaie_-_Stat%C3%A8re%2C_Or%2C_Incertain%2C_%C3%89pire%2C_Pyrrhus_-_btv1b113170136_%282_of_2%29.jpg/960px-Monnaie_-_Stat%C3%A8re%2C_Or%2C_Incertain%2C_%C3%89pire%2C_Pyrrhus_-_btv1b113170136_%282_of_2%29.jpg" alt="Pyrrhus stater, letters under the loupe" loading="lazy"><figcaption>Pyrrhus stater, letters under the loupe<br><a href="https://gallica.bnf.fr/ark:/12148/btv1b113170136" rel="nofollow">Bibliothèque nationale de France · CC BY 4.0</a></figcaption></figure></div>
+<p>Good signs: sharp letter edges, flow lines from the strike, small die cracks. Warning signs: soft, rounded details and tiny bubbles (a cast copy), a seam or filing on the edge, fields too smooth for the wear, and solder traces or scratches at the top (a coin once worn as jewellery). Hold coins by the edge: gold is soft.</p>
+<div class="src">Sources<ul><li>Photo: Bibliothèque nationale de France, via Wikimedia Commons</li></ul></div>
+</article>
+<article class="card">
+<div class="part">Buying</div>
+<h2>Grade words</h2>
+<p class="say">Sale descriptions grade wear: Fine, Very Fine (VF), Extremely Fine (EF), and FDC, &#x27;fleur de coin&#x27;, as struck. The grade measures wear only, not beauty.</p>
+<div class="pics"><figure><div class="rcg"><style>.rcg { width: 100%; max-width: 420px; margin: auto; padding: 10px 12px; text-align: center; font-size: calc(14px * var(--fs, 1)); }.rcg-s { display: none; } .rcg-coins { display: flex; gap: 8px; justify-content: center; }.rcg-coins img { width: 46%; max-width: 180px; aspect-ratio: 1; object-fit: contain; }.rcg-nav { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 8px; }.rcg-nav b { min-width: 11em; font-size: 1.1em; }.rcg-nav label { cursor: pointer; width: 34px; height: 34px; line-height: 31px; border-radius: 50%; border: 1px solid #b8892d; color: #8a6420; font-size: 22px; user-select: none; }.rcg-see { margin: 6px 0 2px; } .rcg-cr { margin: 0; font-size: .82em; opacity: .7; } .rcg-cr a { color: inherit; }.rcg-dots { display: flex; gap: 8px; justify-content: center; margin-top: 8px; }.rcg-dots label { width: 9px; height: 9px; border-radius: 50%; border: 1px solid #b8892d; cursor: pointer; }#rcg0:checked ~ .rcg-s0 { display: block; } #rcg0:checked ~ .rcg-dots label[for=rcg0] { background: #b8892d; } #rcg1:checked ~ .rcg-s1 { display: block; } #rcg1:checked ~ .rcg-dots label[for=rcg1] { background: #b8892d; } #rcg2:checked ~ .rcg-s2 { display: block; } #rcg2:checked ~ .rcg-dots label[for=rcg2] { background: #b8892d; } #rcg3:checked ~ .rcg-s3 { display: block; } #rcg3:checked ~ .rcg-dots label[for=rcg3] { background: #b8892d; }</style><input type="radio" name="rcg" id="rcg0" checked hidden><input type="radio" name="rcg" id="rcg1" hidden><input type="radio" name="rcg" id="rcg2" hidden><input type="radio" name="rcg" id="rcg3" hidden><div class="rcg-s rcg-s0"><div class="rcg-coins"><img src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/learn-rc-grade-theodosius-ii-f-obv.webp" alt="Fine (F), front" loading="lazy"><img src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/learn-rc-grade-theodosius-ii-f-rev.webp" alt="Fine (F), back" loading="lazy"></div><div class="rcg-nav"><label for="rcg3" aria-label="Previous grade">‹</label><b>Fine (F)</b><label for="rcg1" aria-label="Next grade">›</label></div><p class="rcg-see">Long wear: the face, helmet and armour are worn smooth, but every letter can still be read.</p><p class="rcg-cr">1 of 4 · graded by the seller: III-/III (the Austrian scale's 'Fine'), with a bend mark · <a href="https://www.sixbid.com/en/dorotheum/14187/antike/12595554/theodosius-ii-402-450-gold" target="_blank" rel="noopener">Dorotheum, sale 405</a></p></div><div class="rcg-s rcg-s1"><div class="rcg-coins"><img src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/learn-rc-grade-theodosius-ii-vf-obv.webp" alt="Very Fine (VF), front" loading="lazy"><img src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/learn-rc-grade-theodosius-ii-vf-rev.webp" alt="Very Fine (VF), back" loading="lazy"></div><div class="rcg-nav"><label for="rcg0" aria-label="Previous grade">‹</label><b>Very Fine (VF)</b><label for="rcg2" aria-label="Next grade">›</label></div><p class="rcg-see">Wear on the highest points (eyes, helmet jewels, armour), most of the detail still there.</p><p class="rcg-cr">2 of 4 · graded by the seller: sehr schön (very fine) · <a href="https://www.sixbid.com/en/fritz-rudolf-kuenker-gmbh-und-co-kg/14118/romische-munzen/12538628/b-munzen-der-romischen-kaiserzeit-theodosius" target="_blank" rel="noopener">Künker, Auction 447, lot 1250</a></p></div><div class="rcg-s rcg-s2"><div class="rcg-coins"><img src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/learn-rc-grade-theodosius-ii-ef-obv.webp" alt="Extremely Fine (EF), front" loading="lazy"><img src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/learn-rc-grade-theodosius-ii-ef-rev.webp" alt="Extremely Fine (EF), back" loading="lazy"></div><div class="rcg-nav"><label for="rcg1" aria-label="Previous grade">‹</label><b>Extremely Fine (EF)</b><label for="rcg3" aria-label="Next grade">›</label></div><p class="rcg-see">Only a touch of wear on the very tops; hair, pearls and armour crisp.</p><p class="rcg-cr">3 of 4 · graded by the seller: vorzüglich (extremely fine) · <a href="https://www.sixbid.com/en/fritz-rudolf-kuenker-gmbh-und-co-kg/14118/romische-munzen/12538626/b-munzen-der-romischen-kaiserzeit-theodosius" target="_blank" rel="noopener">Künker, Auction 447, lot 1248</a></p></div><div class="rcg-s rcg-s3"><div class="rcg-coins"><img src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/learn-rc-grade-theodosius-ii-fdc-obv.webp" alt="FDC (as struck), front" loading="lazy"><img src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/learn-rc-grade-theodosius-ii-fdc-rev.webp" alt="FDC (as struck), back" loading="lazy"></div><div class="rcg-nav"><label for="rcg2" aria-label="Previous grade">‹</label><b>FDC (as struck)</b><label for="rcg0" aria-label="Next grade">›</label></div><p class="rcg-see">'Fleur de coin': no wear at all, the gold still shining as it left the dies.</p><p class="rcg-cr">4 of 4 · graded by the seller: Stempelglanz (as struck) · <a href="https://www.sixbid.com/en/fritz-rudolf-kuenker-gmbh-und-co-kg/14119/romische-munzen/12535540/b-munzen-der-romischen-kaiserzeit-theodosius" target="_blank" rel="noopener">Künker, eLive Auction 448, lot 3649</a></p></div><div class="rcg-dots"><label for="rcg0" aria-label="Fine (F)"></label><label for="rcg1" aria-label="Very Fine (VF)"></label><label for="rcg2" aria-label="Extremely Fine (EF)"></label><label for="rcg3" aria-label="FDC (as struck)"></label></div></div></figure></div>
+<p>Two coins of the same grade can look very different. Check the strike (are the high points sharp?), the centring (is the whole design on the flan?), the flan (round and full, or cracked?) and the surfaces. Words to watch: &#x27;tooled&#x27; and &#x27;smoothed&#x27; (the fields were worked on), &#x27;graffito&#x27; (a scratched mark), &#x27;ex jewellery&#x27; or &#x27;traces of mounting&#x27;. A beautiful VF can be a better buy than a dull EF.</p>
+<div class="src">Sources<ul><li>NGC Ancients grading scale (grade, strike and surface)</li><li>Sear, Roman Coins and Their Values</li><li>Photos: Dorotheum and Künker sale catalogues, as credited on each slide</li></ul></div>
+</article>
+<article class="card">
+<div class="part">Buying</div>
+<h2>Reading a sale description</h2>
+<p class="say">A lot gives the coin, a reference number, weight, axis, grade and often a line starting &#x27;ex&#x27;: the collections and sales the coin passed through.</p>
+<div class="pics"><figure><img src="https://ikmk.smb.museum/image/18204408/vs_org.jpg" alt="RIC III 213 · 7.13 g · 6 h" loading="lazy"><figcaption>RIC III 213 · 7.13 g · 6 h<br><a href="https://ikmk.smb.museum/object?id=18204408" rel="nofollow">Münzkabinett, Staatliche Museen zu Berlin · CC BY-SA 4.0</a></figcaption></figure></div>
+<p>References point to the standard books: RIC (Roman Imperial Coinage), RRC (Crawford, Roman Republic), Price (Alexander), SB (Sear, Byzantine), Calicó (Roman gold). The hammer is the winning bid; most houses add a buyer&#x27;s fee of about 20 to 25%, so the price paid is higher than the hammer. Estimates are often set low to draw bidders.</p>
+<div class="src">Sources<ul><li>Catalogue card: Antoninus Pius aureus, RIC III 213, Berlin 18204408</li></ul></div>
+</article>
+<p><a class="open" href="https://escargot-studio.github.io/history-through-coins/#learn/read">Open this lesson on the map →</a></p>
+<nav class="more"><b>More lessons</b><ul><li><a href="https://escargot-studio.github.io/history-through-coins/learn/names/">Coin names and sizes</a></li><li><a href="https://escargot-studio.github.io/history-through-coins/learn/gods/">Gods on coins</a></li><li><a href="https://escargot-studio.github.io/history-through-coins/learn/buy/">What one gold coin bought</a></li><li><a href="https://escargot-studio.github.io/history-through-coins/learn/power/">Coins as propaganda</a></li><li><a href="https://escargot-studio.github.io/history-through-coins/learn/know/">How we date ancient coins</a></li><li><a href="https://escargot-studio.github.io/history-through-coins/learn/syracuse/">Syracuse: why its coins are art</a></li><li><a href="https://escargot-studio.github.io/history-through-coins/learn/pantikapaion/">Pantikapaion: the satyr at the edge of the world</a></li><li><a href="https://escargot-studio.github.io/history-through-coins/learn/made/">How coins were made</a></li><li><a href="https://escargot-studio.github.io/history-through-coins/learn/is-it-real/">Is it real?</a></li><li><a href="https://escargot-studio.github.io/history-through-coins/learn/pedigree/">Pedigree and provenance</a></li></ul></nav>
+</main>
+<footer><div class="wrap"><svg viewBox="9 11 89 46" width="44" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M39.33,39.52 C36,29 30,25.5 24,25.5 C17.5,25.5 14,33 14,40.5 C14,49 19,54 26,54 L88,54 C92.5,54 95,52.5 95,50.5 C95,48.3 92,47.6 75.5,47.6"/><path d="M39.3,39.5 C36,24 46,12.5 58.8,12.5 C70,12.5 77.4,21 77.4,31 C77.4,40.5 70,47.4 61.7,47.4 C53,47.4 46.7,41 46.7,33.8 C46.7,26 52.5,20.8 59.4,20.8 C65,20.8 69.2,25 69.2,30.3 C69.2,35.5 65.3,39.1 60.7,39.1 L56,39"/><path d="M19.2,36 Q22,38.6 24.8,36"/><path d="M20.5,27.5 L16.5,18.5 C15.2,15.5 11.5,16.2 12,19.5 M27.5,26 L29.5,16.5 C30.2,13.4 34,13.6 34,16.8"/></g></svg><br>made by Sên<br>
+This site sells nothing and isn't affiliated with any museum, mint, auction house or dealer.
+Photos belong to the collections credited under each one.</div></footer>
+</body>
 </html>
