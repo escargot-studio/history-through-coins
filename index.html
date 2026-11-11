@@ -901,7 +901,7 @@ html.embed body > :not(#learn):not(script) { display: none !important; }
 window.HM_EMBED = /[?&]embed=learn(&|$)/.test(location.search) && window.parent !== window;
 // Fresh copy check (8 Nov): browsers may keep this page up to 10 minutes after a publish. If version.json names a
 // newer build, reload once with the stamp in the address, which skips the cached copy.
-window.HM_BUILD = "20261111225514";
+window.HM_BUILD = "20261111233102";
 (function () {
   if (location.protocol === "file:" || window.HM_BUILD.indexOf("__") === 0) return;
   fetch("version.json?t=" + Date.now(), { cache: "no-store" }).then(r => r.ok ? r.json() : null).then(j => {
