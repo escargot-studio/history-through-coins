@@ -553,6 +553,13 @@ details.src ul { margin: 6px 0 0; padding-left: 18px; }
 .lhead .back span { font-size: 1.5em; line-height: 0.8; margin-top: -2px; }
 .lhead .back:hover { text-decoration: underline; text-underline-offset: 4px; }
 .lhead .crumbs { border-left: 1px solid var(--line); padding-left: 12px; }
+/* Shortcuts to two favourite lessons (14 Nov): plain gold text links, right of the crumbs */
+.lhead .lquick { margin-left: auto; display: flex; gap: 18px; white-space: nowrap; }
+.lhead .lquick button { background: none; border: 0; padding: 4px 0; cursor: pointer; font: 600 calc(14px * var(--fs)) var(--font-body); color: var(--gold); }
+.lhead .lquick button:hover { text-decoration: underline; text-underline-offset: 4px; }
+.lhead .lquick button[aria-current] { color: var(--muted); cursor: default; text-decoration: none; }
+.lhead .lquick + .x { margin-left: 6px; }
+@media (max-width: 560px) { .lhead .lquick { gap: 12px; } .lhead .lquick button { font-size: calc(12.5px * var(--fs)); } .lhead .home { display: none; } }
 .lhead .x { margin-left: auto; width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); cursor: pointer; font-size: calc(17px * var(--fs)); }
 .lbody { padding: 18px 22px 40px; }
 .lintro { color: var(--muted); max-width: 64ch; margin: 0 0 18px; }
@@ -901,7 +908,7 @@ html.embed body > :not(#learn):not(script) { display: none !important; }
 window.HM_EMBED = /[?&]embed=learn(&|$)/.test(location.search) && window.parent !== window;
 // Fresh copy check (8 Nov): browsers may keep this page up to 10 minutes after a publish. If version.json names a
 // newer build, reload once with the stamp in the address, which skips the cached copy.
-window.HM_BUILD = "20261114105541";
+window.HM_BUILD = "20261114110019";
 (function () {
   if (location.protocol === "file:" || window.HM_BUILD.indexOf("__") === 0) return;
   fetch("version.json?t=" + Date.now(), { cache: "no-store" }).then(r => r.ok ? r.json() : null).then(j => {
@@ -2494,6 +2501,7 @@ function renderLearn() {
   const box = $("lbox"), c = learnAt && CHAP.get(learnAt);
   const head = `<div class="lhead">${c ? `<button class="back" data-chap=""><span aria-hidden="true">‹</span> All lessons</button>
     <span class="crumbs">${esc(groupTitle(groupOf(c)))} › ${esc(c.title)}</span>` : `<span class="home">Gold coins, explained</span>`}
+    <nav class="lquick" aria-label="Shortcuts">${[["made", "How coins were made"], ["is-it-real", "Is it real?"]].filter(([id]) => CHAP.has(id)).map(([id, t]) => `<button data-chap="${id}"${c && c.id === id ? ' aria-current="true"' : ""}>${t}</button>`).join("")}</nav>
     <button class="x" data-lclose aria-label="${window.HM_EMBED ? "Close" : "Back to the map"}">×</button></div>`;
   let body;
   if (!c) {
